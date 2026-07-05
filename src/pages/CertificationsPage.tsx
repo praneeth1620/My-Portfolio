@@ -198,6 +198,7 @@ export default function CertificationsPage() {
               {/* Verify Button */}
               <button
                 onClick={() => handleVerify(cert.file)}
+                onMouseMove={e => e.stopPropagation()}
                 className="btn w-full justify-center transition-all duration-300"
                 style={{
                   background: `${cert.color}10`,
@@ -206,16 +207,19 @@ export default function CertificationsPage() {
                   fontWeight: 600,
                   padding: '0.8rem',
                   borderRadius: '12px',
+                  position: 'relative',
+                  zIndex: 10,
+                  transform: 'translateZ(20px)',
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.background = cert.color
                   ;(e.currentTarget as HTMLElement).style.color = '#fff'
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
+                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px) translateZ(20px)'
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLElement).style.background = `${cert.color}10`
                   ;(e.currentTarget as HTMLElement).style.color = cert.color
-                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
+                  ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0) translateZ(20px)'
                 }}
               >
                 <FileText size={16} /> View Certificate

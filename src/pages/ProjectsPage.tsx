@@ -163,13 +163,16 @@ export default function ProjectsPage() {
               </div>
 
               {/* Links */}
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div 
+                style={{ display: 'flex', gap: '0.75rem', position: 'relative', zIndex: 10 }}
+                onMouseMove={e => e.stopPropagation()}
+              >
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"
-                  style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem' }}
+                  style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem', transform: 'translateZ(20px)' }}
                 >
                   <GitHubIcon size={15} /> GitHub
                 </a>
@@ -179,7 +182,7 @@ export default function ProjectsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
-                    style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem' }}
+                    style={{ flex: 1, justifyContent: 'center', padding: '0.55rem 1rem', transform: 'translateZ(20px)' }}
                   >
                     <ExternalLink size={15} /> Live Demo
                   </a>
