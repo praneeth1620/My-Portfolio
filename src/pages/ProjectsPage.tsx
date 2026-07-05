@@ -1,6 +1,7 @@
 import { ExternalLink } from 'lucide-react'
 import { GitHubIcon } from '../components/BrandIcons'
 import PageHeader from '../components/PageHeader'
+import TiltCard from '../components/TiltCard'
 
 const projects = [
   {
@@ -11,7 +12,7 @@ const projects = [
     type: 'Full Stack + AI',
     status: 'Personal Project',
     github: 'https://github.com/praneeth1620/Heart-Attack-prediction',
-    live: null,
+    live: 'https://heart-attack-prediction-delta.vercel.app',
     highlight: true,
   },
   {
@@ -74,14 +75,15 @@ export default function ProjectsPage() {
           }}
         >
           {projects.map((project, i) => (
-            <article
+            <TiltCard
               key={project.title}
               className="card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{
                 padding: '1.75rem',
-                display: 'flex',
-                flexDirection: 'column',
-                animation: `fadeInUp 0.5s ease ${i * 0.1}s both`,
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -183,7 +185,7 @@ export default function ProjectsPage() {
                   </a>
                 )}
               </div>
-            </article>
+            </TiltCard>
           ))}
         </div>
 

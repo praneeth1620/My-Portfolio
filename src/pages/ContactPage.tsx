@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, Code2 } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon } from '../components/BrandIcons'
 import PageHeader from '../components/PageHeader'
+import { motion } from 'framer-motion'
 
 const contactInfo = [
   {
@@ -66,7 +67,13 @@ export default function ContactPage() {
           className="contact-grid"
         >
           {/* Left: Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+          >
             {/* Availability card */}
             <div className="card card-accent" style={{ padding: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
@@ -133,10 +140,17 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Form */}
-          <div className="card" style={{ padding: '2rem' }}>
+          <motion.div
+            className="card"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            style={{ padding: '2rem' }}
+          >
             <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>
               Send a Message
             </h2>
@@ -215,7 +229,7 @@ export default function ContactPage() {
                 This will open your default email client with the message pre-filled.
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

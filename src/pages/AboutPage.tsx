@@ -1,5 +1,6 @@
 import { MapPin, Mail, Phone, GraduationCap, Globe, BookOpen, Code2 } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
+import { motion } from 'framer-motion'
 
 const education = [
   {
@@ -54,8 +55,12 @@ export default function AboutPage() {
           className="about-grid"
         >
           {/* Bio Card */}
-          <div
+          <motion.div
             className="card"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
             style={{ padding: '2rem' }}
           >
             <h2
@@ -144,20 +149,23 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Stats */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {quickStats.map((s, i) => (
-              <div
+              <motion.div
                 key={s.label}
                 className="card"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '1rem',
                   padding: '1.25rem 1.5rem',
-                  animation: `fadeInUp 0.5s ease ${i * 0.1}s both`,
                 }}
               >
                 <div className="icon-box icon-box--sm">
@@ -179,7 +187,7 @@ export default function AboutPage() {
                     {s.label}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Focus Area */}
@@ -207,14 +215,17 @@ export default function AboutPage() {
             <div className="timeline-line" />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {education.map((edu, i) => (
-                <div
+                <motion.div
                   key={edu.institution}
                   className="timeline-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   style={{
                     display: 'flex',
                     gap: '1.5rem',
                     alignItems: 'flex-start',
-                    animation: `fadeInUp 0.5s ease ${i * 0.12}s both`,
                   }}
                 >
                   <div style={{ position: 'relative', zIndex: 1, flexShrink: 0 }}>
@@ -262,7 +273,7 @@ export default function AboutPage() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

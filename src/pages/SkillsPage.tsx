@@ -1,4 +1,5 @@
 import PageHeader from '../components/PageHeader'
+import TiltCard from '../components/TiltCard'
 
 const skillCategories = [
   {
@@ -47,12 +48,15 @@ export default function SkillsPage() {
           }}
         >
           {skillCategories.map((cat, i) => (
-            <div
+            <TiltCard
               key={cat.title}
               className="card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{
                 padding: '1.75rem',
-                animation: `fadeInUp 0.5s ease ${i * 0.1}s both`,
               }}
             >
               {/* Category Header */}
@@ -89,7 +93,7 @@ export default function SkillsPage() {
                   </span>
                 ))}
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
 

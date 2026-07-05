@@ -1,5 +1,6 @@
 import { Award, FileText } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
+import TiltCard from '../components/TiltCard'
 
 const certifications = [
   {
@@ -108,14 +109,15 @@ export default function CertificationsPage() {
           }}
         >
           {certifications.map((cert, i) => (
-            <div
+            <TiltCard
               key={cert.title}
               className="card premium-card group"
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
               style={{
                 padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                animation: `fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${i * 0.1}s both`,
                 borderTop: `3px solid ${cert.color}`,
                 position: 'relative',
                 overflow: 'hidden',
@@ -218,7 +220,7 @@ export default function CertificationsPage() {
               >
                 <FileText size={16} /> View Certificate
               </button>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

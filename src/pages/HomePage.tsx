@@ -96,6 +96,7 @@ export default function HomePage() {
 
         {/* ── Content: Two-column split ── */}
         <div
+          className="hero-split"
           style={{
             maxWidth: '1200px',
             width: '100%',
@@ -109,7 +110,7 @@ export default function HomePage() {
           }}
         >
           {/* LEFT — Text */}
-          <div style={{ flex: 1, maxWidth: '600px' }}>
+          <div className="hero-text" style={{ flex: 1, maxWidth: '600px', display: 'flex', flexDirection: 'column' }}>
             {/* Hello */}
             <p
               style={{
@@ -318,6 +319,7 @@ export default function HomePage() {
           >
             {/* Outer glow ring */}
             <div
+              className="photo-ring"
               style={{
                 position: 'relative',
                 width: '340px',
